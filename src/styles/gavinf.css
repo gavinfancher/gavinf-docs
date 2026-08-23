@@ -223,3 +223,11 @@ kbd {
 .content-panel {
 	padding-inline: clamp(1.25rem, 3vw, 3rem);
 }
+
+/* Starlight paints the site title with --sl-color-text-accent, which makes
+   "docs" bright blue. Cloudflare's wordmark is plain white; match that and
+   leave the accent for links and the active state. */
+.site-title {
+	color: var(--hc-text-1);
+	font-weight: 600;
+}

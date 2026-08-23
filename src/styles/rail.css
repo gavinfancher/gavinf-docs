@@ -22,7 +22,7 @@ body.rail-open {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
-	padding: 10px 11px;
+	padding: 0 11px 10px;
 	box-sizing: border-box;
 	transition: width 0.16s ease;
 	font-family: var(--sl-font);
@@ -64,10 +64,12 @@ body.rail-open {
 }
 
 .portal-rail-brand {
-	height: 42px;
+	/* Exactly the header band, so the divider below lines up with the
+	   header's bottom border instead of floating a few px above it. */
+	height: var(--sl-nav-height);
 	color: var(--hc-text-1);
 	font-size: 15px;
-	margin-bottom: 6px;
+	margin-bottom: 0;
 }
 
 .portal-rail-label {
@@ -83,7 +85,9 @@ body.rail-open {
 	height: 1px;
 	flex-shrink: 0;
 	background: var(--hc-divider);
-	margin: 4px 2px 8px;
+	/* Negative inline margin cancels the rail's padding so this reads as a
+	   continuation of the header's bottom border. */
+	margin: 0 -11px 8px;
 }
 
 .portal-rail-spacer {
