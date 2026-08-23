@@ -1,4 +1,7 @@
-# Backups
+---
+title: "Backups"
+description: "Streamed pg_dump to S3, the restore flow, and the credentials involved."
+---
 
 `backup_stream.py` runs `pg_dump` inside the Postgres container and pipes its stdout straight
 into an S3 multipart upload — no intermediate dump file on disk.

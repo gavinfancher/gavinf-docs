@@ -1,4 +1,7 @@
-# Tunnel & DNS
+---
+title: "Tunnel & DNS"
+description: "Zone setup, the tunnel ingress, and how Caddy routes by Host header."
+---
 
 - Cloudflare holds the zone for `homecloud.dev`.
 - Each published web service gets a `CNAME → <tunnel-id>.cfargotunnel.com`, proxied.

@@ -1,0 +1,126 @@
+/* homecloud/dash theme, mapped onto Starlight's CSS variables.
+   Source of truth: homecloud/frontend/src/App.css and the gavinf-dash portal.
+   Ported from the VitePress theme this site used before — same hex values,
+   different variable namespace (--vp-* -> --sl-*).
+
+   homecloud/dash is dark-only, so the palette is declared once on :root and
+   repeated for [data-theme='light'] rather than offering a light variant. */
+
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+	--hc-accent: #3b82f6;
+	--hc-accent-hover: #2f6fe0;
+	--hc-accent-soft: #16263f;
+
+	--hc-bg: #0a0d12;
+	--hc-bg-alt: #0e131a;
+	--hc-bg-elv: #131a23;
+	--hc-bg-soft: #171f2a;
+
+	--hc-text-1: #e7edf4;
+	--hc-text-2: #8d99a8;
+	--hc-text-3: #5b6675;
+	--hc-divider: #232c39;
+
+	/* Starlight accents. `accent-high` is used for link text on the dark
+	   surface, so it is lightened rather than reusing the raw brand blue. */
+	--sl-color-accent-low: var(--hc-accent-soft);
+	--sl-color-accent: var(--hc-accent);
+	--sl-color-accent-high: #a8c7fa;
+
+	/* Starlight's ramp runs gray-1 (lightest) to gray-6 (darkest). */
+	--sl-color-white: var(--hc-text-1);
+	--sl-color-gray-1: var(--hc-text-1);
+	--sl-color-gray-2: var(--hc-text-2);
+	--sl-color-gray-3: var(--hc-text-3);
+	--sl-color-gray-4: var(--hc-divider);
+	--sl-color-gray-5: var(--hc-bg-elv);
+	--sl-color-gray-6: var(--hc-bg-alt);
+	--sl-color-black: var(--hc-bg);
+
+	--sl-color-bg: var(--hc-bg);
+	--sl-color-bg-nav: var(--hc-bg-alt);
+	--sl-color-bg-sidebar: var(--hc-bg);
+	--sl-color-bg-inline-code: var(--hc-bg-elv);
+	--sl-color-text: var(--hc-text-1);
+	--sl-color-text-accent: var(--hc-accent);
+	--sl-color-hairline: var(--hc-divider);
+	--sl-color-hairline-light: var(--hc-divider);
+	--sl-color-hairline-shade: var(--hc-divider);
+
+	--sl-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--sl-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+
+	--sl-sidebar-width: 232px;
+	/* Leave room for the 56px cross-site rail pinned to the left edge. */
+	--sl-nav-height: 3.5rem;
+}
+
+/* The rail occupies the first 56px of the viewport on every page. */
+:root {
+	--gavinf-rail-width: 56px;
+}
+
+body {
+	background: var(--sl-color-bg);
+}
+
+.page,
+header.header {
+	padding-inline-start: var(--gavinf-rail-width);
+}
+
+@media (max-width: 50rem) {
+	.page,
+	header.header {
+		padding-inline-start: 0;
+	}
+	:root {
+		--gavinf-rail-width: 0px;
+	}
+}
+
+code,
+pre,
+kbd {
+	font-family: var(--sl-font-mono);
+}
+
+/* Cards on the splash page, styled like the dash service-card grid:
+   soft panel, hairline border, accent border on hover. */
+.card {
+	background: var(--hc-bg-elv);
+	border: 1px solid var(--hc-divider);
+	border-radius: 10px;
+	transition: border-color 0.12s;
+}
+
+.card:hover {
+	border-color: var(--hc-accent);
+}
+
+/* Hero buttons match .btn-login / .land-about-btn: soft accent fill,
+   accent border and text, small radius — not a full pill. */
+.action.primary {
+	color: var(--hc-accent);
+	background: var(--hc-accent-soft);
+	border: 1px solid color-mix(in srgb, var(--hc-accent) 30%, transparent);
+	border-radius: 7px;
+	font-weight: 500;
+}
+
+.action.primary:hover {
+	background: color-mix(in srgb, var(--hc-accent) 18%, transparent);
+	border-color: color-mix(in srgb, var(--hc-accent) 55%, transparent);
+	color: var(--hc-accent);
+}
+
+.action.minimal {
+	color: var(--hc-text-2);
+	border-radius: 7px;
+}
+
+.action.minimal:hover {
+	color: var(--hc-text-1);
+}

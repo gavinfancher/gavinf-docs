@@ -1,0 +1,83 @@
+---
+// Cross-site nav rail — Dashboard / homecloud / proxmox / docs.
+// An identical plain-HTML copy lives in the gavinf-dash repo's worker.js
+// (the shell wrapped around the Proxmox UI), and as PortalRail.tsx in the
+// homecloud console. Keep all three in sync: a user crosses between them
+// with no page-level cue.
+const here = 'docs';
+const items = [
+  { id: 'homecloud', label: 'homecloud', href: 'https://homecloud.gavinf.com' },
+  { id: 'proxmox',   label: 'proxmox',   href: 'https://proxmox.gavinf.com' },
+  { id: 'docs',      label: 'docs',      href: 'https://docs.gavinf.com' },
+];
+---
+
+<nav class="portal-rail" aria-label="Sites">
+  <a class="portal-rail-item portal-rail-brand" href="https://dash.gavinf.com" title="Dashboard">
+    <span class="portal-rail-icon portal-rail-mark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.5 4 4 0 0 0 7 19z"
+          stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="portal-rail-label">Dashboard</span>
+  </a>
+  <div class="portal-rail-sep"></div>
+  {items.map((item) => (
+    <a
+      class:list={['portal-rail-item', { active: item.id === here }]}
+      href={item.href}
+      title={item.label}
+    >
+      <span class="portal-rail-icon">
+        {item.id === 'homecloud' && (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+          </svg>
+        )}
+        {item.id === 'proxmox' && (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        )}
+        {item.id === 'docs' && (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/>
+          </svg>
+        )}
+      </span>
+      <span class="portal-rail-label">{item.label}</span>
+    </a>
+  ))}
+  <div class="portal-rail-spacer"></div>
+  <button type="button" class="portal-rail-item portal-rail-toggle" id="rail-toggle" title="Expand">
+    <span class="portal-rail-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>
+      </svg>
+    </span>
+    <span class="portal-rail-label">Collapse</span>
+  </button>
+</nav>
+
+<script is:inline>
+  (function () {
+    var rail = document.querySelector('.portal-rail');
+    if (!rail) return;
+    try {
+      if (localStorage.getItem('portal-rail-open') === '1') {
+        rail.classList.add('open');
+        document.body.classList.add('rail-open');
+      }
+    } catch (e) {}
+    var toggle = document.getElementById('rail-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var open = rail.classList.toggle('open');
+      document.body.classList.toggle('rail-open', open);
+      try { localStorage.setItem('portal-rail-open', open ? '1' : '0'); } catch (e) {}
+    });
+  })();
+</script>

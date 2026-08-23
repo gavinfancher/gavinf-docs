@@ -1,13 +1,20 @@
 {
-  "name": "mydocs",
+  "name": "gavinf-docs",
   "private": true,
   "version": "1.0.0",
-  "scripts": {
-    "dev": "vitepress dev docs --port 4322 --host",
-    "build": "vitepress build docs"
+  "type": "module",
+  "engines": {
+    "node": ">=22"
   },
-  "devDependencies": {
-    "vitepress": "^1.6.4",
-    "vue": "^3.5.41"
+  "scripts": {
+    "dev": "astro dev --port 4322",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/starlight": "^0.41.7",
+    "astro": "^7.2.4"
   }
 }

@@ -1,0 +1,40 @@
+---
+title: myDocs
+description: Docs for homecloud, gavinf.com, and the infrastructure underneath them.
+template: splash
+hero:
+  tagline: Docs for my dev experience.
+  actions:
+    - text: Deploying this site
+      link: /cloudflare/docs-site/
+      icon: right-arrow
+      variant: primary
+    - text: Cloudflare
+      link: /cloudflare/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+Working notes written as reference material: what an API actually returns, which
+failure modes are silent, and why a given shortcut is safe in one place and not
+another.
+
+<CardGrid>
+  <Card title="Cloudflare" icon="cloudflare">
+    Workers, zones, tunnels, and how the sites on `gavinf.com` are deployed.
+    [Open section](/cloudflare/)
+  </Card>
+  <Card title="Proxmox" icon="seti:config">
+    The hypervisor behind homecloud — API access and VM conventions.
+    [Open section](/proxmox/)
+  </Card>
+  <Card title="AWS" icon="seti:db">
+    S3-backed Postgres backups: streamed dumps, restore flow, credentials.
+    [Open section](/aws/)
+  </Card>
+  <Card title="Infisical" icon="seti:lock">
+    Secrets management for wishly and homecloud.
+    [Open section](/infisical/)
+  </Card>
+</CardGrid>

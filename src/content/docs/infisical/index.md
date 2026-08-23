@@ -1,4 +1,7 @@
-# Infisical
+---
+title: "Infisical"
+description: "Secrets management for wishly and homecloud — tokens and machine identities."
+---
 
 Secrets management, pulled into `wishly/infra/infisical/` from the standalone
 `infisical-test` prototype repo.

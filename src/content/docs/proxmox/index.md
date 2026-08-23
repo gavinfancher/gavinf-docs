@@ -1,4 +1,7 @@
-# Proxmox
+---
+title: "Proxmox"
+description: "The hypervisor behind homecloud — API access, tokens, and VM conventions."
+---
 
 The hypervisor behind homecloud. A single node, `pve`, reached over
 Tailscale at `100.x.y.z:8006` — it is not exposed publicly.

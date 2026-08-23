@@ -1,0 +1,8 @@
+---
+// Wraps Starlight's default header so the cross-site rail renders on every
+// page without reimplementing the header itself.
+import Default from '@astrojs/starlight/components/Header.astro';
+import Rail from './Rail.astro';
+---
+<Rail />
+<Default><slot /></Default>
