@@ -78,9 +78,14 @@ kbd {
 	border-color: var(--hc-accent);
 }
 
-/* Hero buttons match .btn-login / .land-about-btn: soft accent fill,
-   accent border and text, small radius — not a full pill. */
-.action.primary {
+/* Hero buttons, styled like the dash's .btn-login: soft accent fill, accent
+   border and text, small radius — not Starlight's default full pill.
+
+   Scoped under .actions on purpose: Starlight's own rule is
+   `.sl-link-button:where(.astro-*).primary`, which is also two classes
+   (:where contributes nothing) and sits later in the bundle, so a bare
+   `.sl-link-button.primary` loses the tie. */
+.actions .sl-link-button.primary {
 	color: var(--hc-accent);
 	background: var(--hc-accent-soft);
 	border: 1px solid color-mix(in srgb, var(--hc-accent) 30%, transparent);
@@ -88,19 +93,21 @@ kbd {
 	font-weight: 500;
 }
 
-.action.primary:hover {
+.actions .sl-link-button.primary:hover {
 	background: color-mix(in srgb, var(--hc-accent) 18%, transparent);
 	border-color: color-mix(in srgb, var(--hc-accent) 55%, transparent);
 	color: var(--hc-accent);
 }
 
-.action.minimal {
+.actions .sl-link-button.minimal {
 	color: var(--hc-text-2);
 	border-radius: 7px;
+	padding-inline: 0.75rem;
 }
 
-.action.minimal:hover {
+.actions .sl-link-button.minimal:hover {
 	color: var(--hc-text-1);
+	background: var(--hc-bg-elv);
 }
 
 /* ---------------------------------------------------------------------------

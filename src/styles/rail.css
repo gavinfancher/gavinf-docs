@@ -3,6 +3,10 @@
 
 :root {
 	--rail-w: 56px;
+	/* Layout offsets use the collapsed width and never change. Expanding the
+	   rail overlays the page rather than reflowing it — reflowing on a
+	   transition desyncs the rail against the content it is pushing. */
+	--rail-gutter: 56px;
 }
 
 body.rail-open {
@@ -71,6 +75,8 @@ body.rail-open {
 	height: var(--sl-nav-height);
 	box-sizing: border-box;
 	border-bottom: 1px solid var(--hc-divider);
+	/* .portal-rail-item sets 7px, which rounds the ends of that border. */
+	border-radius: 0;
 	margin: 0 -11px 8px;
 	padding-inline: 11px;
 	color: var(--hc-text-1);
@@ -111,18 +117,18 @@ body.rail-open {
 /* Add the rail to Starlight's nav padding rather than replacing it —
    overriding it outright pushes the wordmark flush against the rail border. */
 header.header {
-	padding-inline-start: calc(var(--sl-nav-pad-x) + var(--rail-w));
+	padding-inline-start: calc(var(--sl-nav-pad-x) + var(--rail-gutter));
 }
 
 .sidebar-pane {
-	inset-inline-start: var(--rail-w);
+	inset-inline-start: var(--rail-gutter);
 }
 
 /* Add the rail to Starlight's own inset — do not replace it.
    --sl-content-inline-start is the sidebar width (0 below the breakpoint);
    overriding it outright slides the content under the sidebar. */
 .main-frame {
-	padding-inline-start: calc(var(--sl-content-inline-start) + var(--rail-w));
+	padding-inline-start: calc(var(--sl-content-inline-start) + var(--rail-gutter));
 }
 
 /* Below Starlight's breakpoint the sidebar becomes a drawer and the rail
