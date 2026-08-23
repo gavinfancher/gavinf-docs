@@ -1,6 +1,9 @@
 ---
 title: "Proxmox"
 description: "The hypervisor behind homecloud — API access, tokens, and VM conventions."
+sidebar:
+  label: Overview
+  order: 0
 ---
 
 The hypervisor behind homecloud. A single node, `pve`, reached over

@@ -53,32 +53,11 @@
 	--sl-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
 
 	--sl-sidebar-width: 232px;
-	/* Leave room for the 56px cross-site rail pinned to the left edge. */
 	--sl-nav-height: 3.5rem;
-}
-
-/* The rail occupies the first 56px of the viewport on every page. */
-:root {
-	--gavinf-rail-width: 56px;
 }
 
 body {
 	background: var(--sl-color-bg);
-}
-
-.page,
-header.header {
-	padding-inline-start: var(--gavinf-rail-width);
-}
-
-@media (max-width: 50rem) {
-	.page,
-	header.header {
-		padding-inline-start: 0;
-	}
-	:root {
-		--gavinf-rail-width: 0px;
-	}
 }
 
 code,
@@ -123,4 +102,92 @@ kbd {
 
 .action.minimal:hover {
 	color: var(--hc-text-1);
+}
+
+/* ---------------------------------------------------------------------------
+   Sidebar, in the register Cloudflare's developer docs use: group labels as
+   small uppercase eyebrows, and a quiet rounded pill for the current page
+   rather than a saturated fill.
+   --------------------------------------------------------------------------- */
+
+.sidebar-content {
+	padding-top: 1.25rem;
+}
+
+/* Section headings: "CLOUDFLARE", not "Cloudflare" */
+.sidebar-content .group-label .large {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--hc-text-3);
+}
+
+.sidebar-content summary {
+	padding-block: 0.4rem;
+	margin-top: 0.9rem;
+}
+
+.sidebar-content .top-level > li:first-child summary {
+	margin-top: 0;
+}
+
+/* The caret competes with the eyebrow; Cloudflare's top-level groups don't
+   show one at all. */
+.sidebar-content .top-level > li > details > summary .caret {
+	opacity: 0.35;
+	width: 1rem;
+	height: 1rem;
+}
+
+.sidebar-content a {
+	border-radius: 7px;
+	padding: 0.35rem 0.6rem;
+	font-size: 0.875rem;
+	line-height: 1.45;
+	color: var(--hc-text-2);
+	border-inline-start: 0;
+	transition: background 0.12s, color 0.12s;
+}
+
+.sidebar-content a:hover {
+	background: var(--hc-bg-elv);
+	color: var(--hc-text-1);
+}
+
+/* Current page: quiet elevated pill, not the default accent fill. */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover {
+	background: var(--hc-bg-soft);
+	color: var(--hc-text-1);
+	font-weight: 600;
+	border-inline-start: 0;
+}
+
+/* Starlight draws a hairline down nested lists; Cloudflare leaves it out. */
+.sidebar-content .top-level ul ul,
+.sidebar-content .top-level > li > details > ul {
+	border-inline-start: 0;
+	padding-inline-start: 0;
+	margin-inline-start: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Splash hero — large title, muted lead, matching the docs landing pattern.
+   --------------------------------------------------------------------------- */
+
+.hero h1 {
+	font-size: clamp(2.5rem, 6vw, 3.75rem);
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+	color: var(--hc-text-2);
+	font-size: 1.0625rem;
+	max-width: 34rem;
+}
+
+.content-panel h1 {
+	letter-spacing: -0.015em;
 }

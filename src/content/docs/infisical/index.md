@@ -1,6 +1,9 @@
 ---
 title: "Infisical"
 description: "Secrets management for wishly and homecloud — tokens and machine identities."
+sidebar:
+  label: Overview
+  order: 0
 ---
 
 Secrets management, pulled into `wishly/infra/infisical/` from the standalone

@@ -1,6 +1,9 @@
 ---
 title: "Cloudflare"
 description: "Zones, tunnels, and the Workers that serve every gavinf.com site."
+sidebar:
+  label: Overview
+  order: 0
 ---
 
 Zones, tunnels, and the Workers that front every `gavinf.com` site.

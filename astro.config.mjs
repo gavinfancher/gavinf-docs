@@ -15,9 +15,17 @@ export default defineConfig({
         Header: './src/components/Header.astro',
         ThemeSelect: './src/components/Empty.astro',
       },
-      // No `sidebar` key: Starlight then generates the whole nav from the
-      // src/content/docs tree. A new page is a new file, and a deleted page
-      // can't leave a dangling entry behind.
+      // Explicit groups so the labels read as titles ("AWS", not the "aws"
+      // directory name), with autogenerate inside each so pages are still
+      // picked up from the filesystem. Only a brand-new top-level section
+      // needs a line here.
+      sidebar: [
+        { label: 'Cloudflare', items: [{ autogenerate: { directory: 'cloudflare' } }] },
+        { label: 'Proxmox',    items: [{ autogenerate: { directory: 'proxmox' } }] },
+        { label: 'AWS',        items: [{ autogenerate: { directory: 'aws' } }] },
+        { label: 'Infisical',  items: [{ autogenerate: { directory: 'infisical' } }] },
+        { label: 'Test',       items: [{ autogenerate: { directory: 'test' } }] },
+      ],
       pagination: false,
       social: [],
       lastUpdated: false,
