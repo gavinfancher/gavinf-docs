@@ -191,3 +191,35 @@ kbd {
 .content-panel h1 {
 	letter-spacing: -0.015em;
 }
+
+/* ---------------------------------------------------------------------------
+   Content and table-of-contents widths.
+
+   Starlight sizes the right sidebar to swallow whatever space the content
+   column doesn't use:
+
+     width: max(--sl-sidebar-width,
+                --sl-sidebar-width + (100% - --sl-content-width - --sl-sidebar-width) / 2)
+
+   With the default 45rem content cap that leaves a ~600px "On this page"
+   column on a wide screen. Pin the TOC to the sidebar width and let the
+   content column take the rest, capped for line length.
+   --------------------------------------------------------------------------- */
+
+:root {
+	--sl-content-width: 82rem;
+}
+
+.right-sidebar-container {
+	width: var(--sl-sidebar-width);
+	flex: 0 0 var(--sl-sidebar-width);
+}
+
+.right-sidebar {
+	width: var(--sl-sidebar-width);
+}
+
+/* Breathing room between the sidebar rule and the prose. */
+.content-panel {
+	padding-inline: clamp(1.25rem, 3vw, 3rem);
+}

@@ -111,16 +111,21 @@ header.header {
 	inset-inline-start: var(--rail-w);
 }
 
+/* Add the rail to Starlight's own inset — do not replace it.
+   --sl-content-inline-start is the sidebar width (0 below the breakpoint);
+   overriding it outright slides the content under the sidebar. */
 .main-frame {
-	padding-inline-start: var(--rail-w);
+	padding-inline-start: calc(var(--sl-content-inline-start) + var(--rail-w));
 }
 
 /* Below Starlight's breakpoint the sidebar becomes a drawer and the rail
    hides, so nothing needs offsetting. */
 @media (max-width: 50rem) {
-	header.header,
-	.main-frame {
+	header.header {
 		padding-inline-start: 0;
+	}
+	.main-frame {
+		padding-inline-start: var(--sl-content-inline-start);
 	}
 	.sidebar-pane {
 		inset-inline-start: 0;
