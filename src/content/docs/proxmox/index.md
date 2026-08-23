@@ -2,7 +2,7 @@
 title: "Proxmox"
 description: "The hypervisor behind homecloud — API access, tokens, and VM conventions."
 sidebar:
-  label: Overview
+  label: OaFJSDKFJASw
   order: 0
 ---
 
