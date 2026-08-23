@@ -19,14 +19,15 @@ export default defineConfig({
             text: 'Cloudflare',
             link: '/cloudflare/',
             collapsed: false,
-            items: [{ text: 'Tunnel & DNS', link: '/cloudflare/tunnel' }],
+            items: [
+              { text: 'Deploying this site', link: '/cloudflare/docs-site' },
+              { text: 'Tunnel & DNS', link: '/cloudflare/tunnel' },
+            ],
           },
           { text: 'Infisical', link: '/infisical/' },
           {
             text: 'Proxmox',
             link: '/proxmox/',
-            collapsed: false,
-            items: [{ text: 'VM status API', link: '/proxmox/vm-status' }],
           },
           {
             text: 'AWS',

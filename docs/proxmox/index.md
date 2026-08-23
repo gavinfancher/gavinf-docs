@@ -3,10 +3,6 @@
 The hypervisor behind homecloud. A single node, `pve`, reached over
 Tailscale at `100.x.y.z:8006` — it is not exposed publicly.
 
-## In this section
-
-- [VM status API](/proxmox/vm-status) — what `status/current` returns, field by field
-
 ## Access
 
 API tokens authenticate with a `PVEAPIToken=user@realm!tokenid=secret` header.

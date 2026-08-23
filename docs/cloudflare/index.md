@@ -1,20 +1,31 @@
 # Cloudflare
 
-Zones, tunnels, and the `gavinf-prod` Worker that fronts every `gavinf.com` site.
+Zones, tunnels, and the Workers that front every `gavinf.com` site.
 
 ## In this section
 
+- [Deploying this site](/cloudflare/docs-site) — the `gavinf-docs` Worker, custom domains, Git builds
 - [Tunnel & DNS](/cloudflare/tunnel) — zone setup, the tunnel ingress, and Caddy routing
 
 ## Sites
 
-`gavinf-prod` is one Worker + one Workers Assets bundle serving four hosts:
+Two Workers serve the `gavinf.com` zone.
+
+`gavinf-prod` is one Worker + one Workers Assets bundle, routed by hostname in
+`worker.js`:
 
 | Host | Serves |
 |---|---|
 | `gavinf.com`, `auth.gavinf.com`, `dash.gavinf.com` | portal SPA |
 | `homecloud.gavinf.com` | console SPA |
-| `docs.gavinf.com` | this site |
 | `proxmox.gavinf.com` | rail shell + passthrough to the tunnel origin |
 
-Routing lives in `worker.js`, keyed off `request.url`'s hostname — see [Tunnel & DNS](/cloudflare/tunnel).
+`gavinf-docs` is a static assets Worker with no script at all:
+
+| Host | Serves |
+|---|---|
+| `docs.gavinf.com` | this site — see [Deploying this site](/cloudflare/docs-site) |
+
+Docs used to live inside `gavinf-prod` too, built from `homecloud/frontend/docs`.
+Splitting them out means the docs deploy on their own and can cover projects
+beyond homecloud.
