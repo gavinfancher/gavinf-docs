@@ -64,12 +64,22 @@ body.rail-open {
 }
 
 .portal-rail-brand {
-	/* Exactly the header band, so the divider below lines up with the
-	   header's bottom border instead of floating a few px above it. */
+	/* Mirror Starlight's .header box model exactly — height: --sl-nav-height
+	   with a 1px bottom border inside it (border-box) — so the rail's rule and
+	   the header's rule are the same line. Negative inline margin cancels the
+	   rail's padding so it spans the full width. */
 	height: var(--sl-nav-height);
+	box-sizing: border-box;
+	border-bottom: 1px solid var(--hc-divider);
+	margin: 0 -11px 8px;
+	padding-inline: 11px;
 	color: var(--hc-text-1);
 	font-size: 15px;
-	margin-bottom: 0;
+}
+
+/* Superseded by the brand row's own border, above. */
+.portal-rail-sep {
+	display: none;
 }
 
 .portal-rail-label {
@@ -79,15 +89,6 @@ body.rail-open {
 
 .portal-rail.open .portal-rail-label {
 	opacity: 1;
-}
-
-.portal-rail-sep {
-	height: 1px;
-	flex-shrink: 0;
-	background: var(--hc-divider);
-	/* Negative inline margin cancels the rail's padding so this reads as a
-	   continuation of the header's bottom border. */
-	margin: 0 -11px 8px;
 }
 
 .portal-rail-spacer {
@@ -107,8 +108,10 @@ body.rail-open {
 
 /* Starlight layout offset. The header and the sidebar are both position:fixed,
    so padding on an ancestor does not move them — each needs its own inset. */
+/* Add the rail to Starlight's nav padding rather than replacing it —
+   overriding it outright pushes the wordmark flush against the rail border. */
 header.header {
-	padding-inline-start: var(--rail-w);
+	padding-inline-start: calc(var(--sl-nav-pad-x) + var(--rail-w));
 }
 
 .sidebar-pane {
@@ -126,7 +129,7 @@ header.header {
    hides, so nothing needs offsetting. */
 @media (max-width: 50rem) {
 	header.header {
-		padding-inline-start: 0;
+		padding-inline-start: var(--sl-nav-pad-x);
 	}
 	.main-frame {
 		padding-inline-start: var(--sl-content-inline-start);

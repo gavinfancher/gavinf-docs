@@ -26,6 +26,9 @@ export default defineConfig({
         { label: 'Infisical',  items: [{ autogenerate: { directory: 'infisical' } }] },
         { label: 'Test',       items: [{ autogenerate: { directory: 'test' } }] },
       ],
+      // No chain icon beside headings; ids are still emitted, so #anchors
+      // and the table of contents keep working.
+      markdown: { headingLinks: false },
       pagination: false,
       social: [],
       lastUpdated: false,
