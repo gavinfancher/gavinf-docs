@@ -1,5 +1,5 @@
 {
-  "name": "mydocs",
+  "name": "gavinf-docs",
   "compatibility_date": "2026-08-23",
   "assets": {
     "directory": "./docs/.vitepress/dist"
