@@ -35,6 +35,29 @@ Deleting a page therefore means deleting every link to it, including its entry
 in the `sidebar` array in `.vitepress/config.mts`. Suppress the check with
 `ignoreDeadLinks` in the config only if you actually want dangling links.
 
+## Adding a page
+
+The sidebar is generated from the `docs/` tree at build time by
+`.vitepress/sidebar.mts` — there is no array to maintain.
+
+| Path | Becomes |
+|---|---|
+| `docs/<section>/index.md` | the section itself, labelled by its `# H1` |
+| `docs/<section>/<page>.md` | a child page under that section |
+| `docs/index.md` | the home page — deliberately not listed |
+
+Labels come from each file's `# H1`, or a frontmatter `title:` if you want the
+nav label to differ from the heading. Sections and pages sort alphabetically;
+`order: <n>` in frontmatter pins an entry ahead of that.
+
+A directory with no `index.md` still renders as a group heading, so a section
+is only truly missing if it has no markdown in it at all.
+
+> This replaced a hand-written `sidebar` array. The array was the reason two
+> separate breakages happened in one afternoon: a deleted page left a dangling
+> entry (a hard build failure, since VitePress errors on dead links), and a new
+> page silently never appeared in the nav. Neither is possible now.
+
 ## Routes and `index.md`
 
 A directory only answers on its trailing-slash URL if it contains `index.md`.
