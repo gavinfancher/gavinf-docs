@@ -1,12 +1,12 @@
 # Deploying this site
 
 This site is a static VitePress build served by a Workers Assets Worker named
-`gavinf-docs`, on `docs.gavinf.com`. No server code — `wrangler.json` has no
+`mydocs`, on `docs.gavinf.com`. No server code — `wrangler.json` has no
 `main`, only an `assets` directory, so Cloudflare serves the files directly.
 
 ```json
 {
-  "name": "gavinf-docs",
+  "name": "mydocs",
   "compatibility_date": "2026-08-23",
   "assets": { "directory": "./docs/.vitepress/dist" }
 }
@@ -67,7 +67,7 @@ the file `index.md` and `/test/` resolves.
 ## Custom domain
 
 A hostname can be a Custom Domain on **exactly one Worker**. `docs.gavinf.com`
-previously belonged to `gavinf-prod`, so attaching it to `gavinf-docs` meant
+previously belonged to `gavinf-prod`, so attaching it to `mydocs` meant
 detaching it first — attaching over a live binding fails rather than
 overriding it.
 
@@ -83,7 +83,7 @@ curl -X PUT \
   -H "Authorization: Bearer $CF_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"environment":"production","hostname":"docs.gavinf.com",
-       "service":"gavinf-docs","zone_id":"'"$ZONE_ID"'"}'
+       "service":"mydocs","zone_id":"'"$ZONE_ID"'"}'
 ```
 
 List existing bindings to find `$DOMAIN_ID`:
@@ -101,14 +101,14 @@ move, so no new cert has to be issued and the switch propagates in seconds.
 
 ### Rolling back
 
-Same two calls with the services swapped — detach from `gavinf-docs`, attach to
+Same two calls with the services swapped — detach from `mydocs`, attach to
 `gavinf-prod`. The old site keeps working as long as `gavinf-prod` still has
 its `DOCS_HOST` branch and bundles the docs build.
 
 ## Git-connected builds
 
 The deploy above is manual, from a laptop. To build on push instead, connect
-the repo in **Workers & Pages → gavinf-docs → Settings → Builds**:
+the repo in **Workers & Pages → mydocs → Settings → Builds**:
 
 | Setting | Value |
 |---|---|

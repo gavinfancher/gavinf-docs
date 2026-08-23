@@ -4,7 +4,7 @@ Zones, tunnels, and the Workers that front every `gavinf.com` site.
 
 ## In this section
 
-- [Deploying this site](/cloudflare/docs-site) — the `gavinf-docs` Worker, custom domains, Git builds
+- [Deploying this site](/cloudflare/docs-site) — the `mydocs` Worker, custom domains, Git builds
 - [Tunnel & DNS](/cloudflare/tunnel) — zone setup, the tunnel ingress, and Caddy routing
 
 ## Sites
@@ -20,7 +20,7 @@ Two Workers serve the `gavinf.com` zone.
 | `homecloud.gavinf.com` | console SPA |
 | `proxmox.gavinf.com` | rail shell + passthrough to the tunnel origin |
 
-`gavinf-docs` is a static assets Worker with no script at all:
+`mydocs` is a static assets Worker with no script at all:
 
 | Host | Serves |
 |---|---|
