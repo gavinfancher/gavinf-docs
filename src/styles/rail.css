@@ -126,10 +126,13 @@ header.header {
 }
 
 /* Add the rail to Starlight's own inset — do not replace it.
-   --sl-content-inline-start is the sidebar width (0 below the breakpoint);
-   overriding it outright slides the content under the sidebar. */
+   --sl-content-inline-start is the sidebar width (0 below the breakpoint).
+   Splash pages have no sidebar and never define it, and an undefined variable
+   makes the whole calc() invalid — which is why the home page used to sit
+   still while the header slid: it fell back to a padding of 0. Hence the
+   explicit 0px fallback here and everywhere else the variable is read. */
 .main-frame {
-	padding-inline-start: calc(var(--sl-content-inline-start) + var(--rail-w));
+	padding-inline-start: calc(var(--sl-content-inline-start, 0px) + var(--rail-w));
 	transition: padding-inline-start 0.16s ease;
 }
 
@@ -140,7 +143,7 @@ header.header {
 		padding-inline-start: var(--sl-nav-pad-x);
 	}
 	.main-frame {
-		padding-inline-start: var(--sl-content-inline-start);
+		padding-inline-start: var(--sl-content-inline-start, 0px);
 	}
 	.sidebar-pane {
 		inset-inline-start: 0;
@@ -154,7 +157,7 @@ header.header {
    becomes a fixed "On this page" bar with `inset-inline: 0`, so its left end
    runs under the rail and the sidebar. Start it after both. */
 mobile-starlight-toc nav {
-	inset-inline-start: calc(var(--sl-content-inline-start) + var(--rail-w));
+	inset-inline-start: calc(var(--sl-content-inline-start, 0px) + var(--rail-w));
 	transition: inset-inline-start 0.16s ease;
 }
 
