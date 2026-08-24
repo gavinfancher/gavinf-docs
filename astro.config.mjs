@@ -8,6 +8,9 @@ export default defineConfig({
     starlight({
       title: 'docs',
       description: 'Documentation for gavinf.com projects, written in Markdown.',
+      // The cloud mark from the portal rail — same favicon as gavinf.com and
+      // homecloud, so the tab reads as one site across the subdomains.
+      favicon: '/favicon.svg',
       // Dark-only, matching homecloud/dash — the palette in gavinf.css is
       // declared for both themes, so the toggle is removed rather than hidden.
       customCss: ['./src/styles/gavinf.css', './src/styles/rail.css'],
