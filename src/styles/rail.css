@@ -149,3 +149,17 @@ header.header {
 		display: none;
 	}
 }
+
+/* Between Starlight's two breakpoints (50rem–72rem) the table of contents
+   becomes a fixed "On this page" bar with `inset-inline: 0`, so its left end
+   runs under the rail and the sidebar. Start it after both. */
+mobile-starlight-toc nav {
+	inset-inline-start: calc(var(--sl-content-inline-start) + var(--rail-w));
+	transition: inset-inline-start 0.16s ease;
+}
+
+@media (max-width: 50rem) {
+	mobile-starlight-toc nav {
+		inset-inline-start: 0;
+	}
+}
