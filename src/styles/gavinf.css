@@ -11,17 +11,17 @@
 :root[data-theme='dark'] {
 	--hc-accent: #3fd79a;
 	--hc-accent-hover: #35be87;
-	--hc-accent-soft: #0f2a20;
+	--hc-accent-soft: #102420;
 
-	--hc-bg: #0b0f0e;
-	--hc-bg-alt: #0f1614;
-	--hc-bg-elv: #141c19;
-	--hc-bg-soft: #18211d;
+	--hc-bg: #0d0d0d;
+	--hc-bg-alt: #121212;
+	--hc-bg-elv: #161616;
+	--hc-bg-soft: #1b1b1b;
 
-	--hc-text-1: #e6efe9;
-	--hc-text-2: #8fa49a;
-	--hc-text-3: #5c6b64;
-	--hc-divider: #253431;
+	--hc-text-1: #ededed;
+	--hc-text-2: #a1a1a1;
+	--hc-text-3: #6e6e6e;
+	--hc-divider: #2b2b2b;
 
 	/* Starlight accents. `accent-high` is used for link text on the dark
 	   surface, so it is lightened rather than reusing the raw brand blue. */
@@ -70,7 +70,7 @@ kbd {
 .card {
 	background: var(--hc-bg-elv);
 	border: 1px solid var(--hc-divider);
-	border-radius: 10px;
+	border-radius: 3px;
 	transition: border-color 0.12s;
 }
 
@@ -89,7 +89,7 @@ kbd {
 	color: var(--hc-accent);
 	background: var(--hc-accent-soft);
 	border: 1px solid color-mix(in srgb, var(--hc-accent) 30%, transparent);
-	border-radius: 7px;
+	border-radius: 2px;
 	font-weight: 500;
 }
 
@@ -101,7 +101,7 @@ kbd {
 
 .actions .sl-link-button.minimal {
 	color: var(--hc-text-2);
-	border-radius: 7px;
+	border-radius: 2px;
 	padding-inline: 0.75rem;
 }
 
@@ -147,7 +147,7 @@ kbd {
 }
 
 .sidebar-content a {
-	border-radius: 7px;
+	border-radius: 2px;
 	padding: 0.35rem 0.6rem;
 	font-size: 0.875rem;
 	line-height: 1.45;
@@ -161,12 +161,13 @@ kbd {
 	color: var(--hc-text-1);
 }
 
-/* Current page: quiet elevated pill, not the default accent fill. */
+/* Current page: grey surface with a green edge, matching homecloud's nav. */
 .sidebar-content a[aria-current='page'],
 .sidebar-content a[aria-current='page']:hover {
 	background: var(--hc-bg-soft);
 	color: var(--hc-text-1);
 	font-weight: 600;
+	box-shadow: inset 2px 0 0 var(--hc-accent);
 	border-inline-start: 0;
 }
 

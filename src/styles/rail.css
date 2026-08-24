@@ -35,7 +35,7 @@ body.rail-open {
 	flex-shrink: 0;
 	height: 38px;
 	padding: 0 2px;
-	border-radius: 7px;
+	border-radius: 2px;
 	color: var(--hc-text-2);
 	text-decoration: none;
 	white-space: nowrap;
@@ -60,7 +60,7 @@ body.rail-open {
 
 .portal-rail-mark {
 	background: var(--hc-accent-soft);
-	border-radius: 7px;
+	border-radius: 2px;
 }
 
 .portal-rail-brand {
