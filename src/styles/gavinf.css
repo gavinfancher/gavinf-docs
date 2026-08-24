@@ -9,25 +9,25 @@
 :root,
 :root[data-theme='light'],
 :root[data-theme='dark'] {
-	--hc-accent: #3b82f6;
-	--hc-accent-hover: #2f6fe0;
-	--hc-accent-soft: #16263f;
+	--hc-accent: #3fd79a;
+	--hc-accent-hover: #35be87;
+	--hc-accent-soft: #0f2a20;
 
-	--hc-bg: #0a0d12;
-	--hc-bg-alt: #0e131a;
-	--hc-bg-elv: #131a23;
-	--hc-bg-soft: #171f2a;
+	--hc-bg: #0b0f0e;
+	--hc-bg-alt: #0f1614;
+	--hc-bg-elv: #141c19;
+	--hc-bg-soft: #18211d;
 
-	--hc-text-1: #e7edf4;
-	--hc-text-2: #8d99a8;
-	--hc-text-3: #5b6675;
-	--hc-divider: #232c39;
+	--hc-text-1: #e6efe9;
+	--hc-text-2: #8fa49a;
+	--hc-text-3: #5c6b64;
+	--hc-divider: #253431;
 
 	/* Starlight accents. `accent-high` is used for link text on the dark
 	   surface, so it is lightened rather than reusing the raw brand blue. */
 	--sl-color-accent-low: var(--hc-accent-soft);
 	--sl-color-accent: var(--hc-accent);
-	--sl-color-accent-high: #a8c7fa;
+	--sl-color-accent-high: #a6e8c8;
 
 	/* Starlight's ramp runs gray-1 (lightest) to gray-6 (darkest). */
 	--sl-color-white: var(--hc-text-1);
