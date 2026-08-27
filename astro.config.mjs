@@ -24,6 +24,7 @@ export default defineConfig({
       // needs a line here.
       sidebar: [
         { label: 'Cloudflare', items: [{ autogenerate: { directory: 'cloudflare' } }] },
+        { label: 'Git',        items: [{ autogenerate: { directory: 'git' } }] },
         { label: 'Proxmox',    items: [{ autogenerate: { directory: 'proxmox' } }] },
         { label: 'AWS',        items: [{ autogenerate: { directory: 'aws' } }] },
         { label: 'Infisical',  items: [{ autogenerate: { directory: 'infisical' } }] },

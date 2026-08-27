@@ -1,9 +1,6 @@
 ---
 title: "Git Flow"
 description: "custom macro"
-sidebar:
-  label: Overview
-  order: 0
 ---
 
 ### custom macro to speed up git cli
