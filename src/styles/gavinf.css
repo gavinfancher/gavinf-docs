@@ -195,6 +195,26 @@ kbd {
 	max-width: 34rem;
 }
 
+/* Starlight pads the hero by up to 10rem block-start and block-end and reserves
+   a 4fr column for a hero image. With no image and no action buttons, that
+   strands the title and one line of tagline in a mostly empty band — so tighten
+   the padding and let the copy span the full width. Unlayered, so it beats the
+   starlight.core layer without needing extra specificity. */
+.hero {
+	grid-template-columns: 100%;
+	padding-block: clamp(1.5rem, calc(0.5rem + 3vmin), 3.5rem);
+}
+
+/* The table of contents' first entry ("Overview") is an anchor to the page
+   <h1>, which carries id="_top". Starlight parks anchor targets at
+   scroll-padding-top (1.5rem + nav height), but at rest the h1 sits slightly
+   lower than that — so clicking it nudged the page down a few pixels instead
+   of returning to the top. The h1 already clears the fixed header at scroll 0,
+   so overshoot the margin and let the browser clamp the jump to true top. */
+h1#_top {
+	scroll-margin-top: 100vh;
+}
+
 .content-panel h1 {
 	letter-spacing: -0.015em;
 }
