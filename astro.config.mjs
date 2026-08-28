@@ -24,11 +24,11 @@ export default defineConfig({
       // needs a line here.
       sidebar: [
         { label: 'Cloudflare', items: [{ autogenerate: { directory: 'cloudflare' } }] },
-        { label: 'Git',        items: [{ autogenerate: { directory: 'git' } }] },
-        { label: 'Proxmox',    items: [{ autogenerate: { directory: 'proxmox' } }] },
-        { label: 'AWS',        items: [{ autogenerate: { directory: 'aws' } }] },
-        { label: 'Infisical',  items: [{ autogenerate: { directory: 'infisical' } }] },
-        { label: 'Test',       items: [{ autogenerate: { directory: 'test' } }] },
+        { label: 'Git', items: [{ autogenerate: { directory: 'git' } }] },
+        { label: 'Proxmox', items: [{ autogenerate: { directory: 'proxmox' } }] },
+        { label: 'AWS', items: [{ autogenerate: { directory: 'aws' } }] },
+        { label: 'Infisical', items: [{ autogenerate: { directory: 'infisical' } }] },
+        { label: 'Wishly', items: [{ autogenerate: { directory: 'wishly' } }] },
       ],
       // No chain icon beside headings; ids are still emitted, so #anchors
       // and the table of contents keep working.
